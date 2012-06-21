@@ -30,6 +30,7 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'首页', 'url'=>array('/site/index')),
+				array('label'=>'分类', 'url'=>array('/category/admin'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'商品管理', 'url'=>array('/goods/admin'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'采集', 'url'=>array('/goods/index'),'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'登陆', 'url'=>array('site/login'), 'visible'=>Yii::app()->user->isGuest),
