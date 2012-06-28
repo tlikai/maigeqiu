@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'后台管理',
+    'timeZone' => 'Asia/Shang',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -45,14 +46,15 @@ return array(
 		 */
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=tbk;port=8809',
+			'connectionString' => 'mysql:host=localhost;dbname=tbk;',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		'cache'=>array(
-			'class'=>'CFileCache'
+			'class'=>'CFileCache',
+            'directoryLevel' => 2,
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

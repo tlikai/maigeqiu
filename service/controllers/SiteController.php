@@ -27,30 +27,27 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$page = Yii::app()->request->getQuery('page','1');
-		
+		$page = Yii::app()->request->getQuery('page', 1);
+        $catId = Yii::app()->request->getQuery('cat', 0);
 		$appId = Yii::app()->params['appId'];
-		switch ( $appId )
-		{
-			case '1':
-				$goods = Goods::getGoods($page,$appId);
-				$this->render('index',array(
-					'data'=>$goods['data'],
-					'pager'=>$goods['pager'],
-				));
-			break;
-			case '2':
-				$goods = Goods::getGoods($page,$appId);
-				$this->layout = 'app2';
-				$this->render('../app/index',array(
-					'data'=>$goods['data'],
-					'pager'=>$goods['pager'],
-				));
-			break;
-		} 
-		
+
+        $view = 'index';
+        $layout = $this->layout;
+
+        if($appId == 2)
+        {
+            $view = '../app/index';
+            $layout = 'app2';
+        }
+
+        $goods = Goods::getGoods($appId, $catId, $page);
+        $cats = Category::model()->getByAppId($appId);
+        $this->layout = $layout;
+        $this->render($view, array(
+            'cats' => $cats,
+            'data' => $goods['data'],
+            'pager' => $goods['pager'],
+        ));
 	}
 	
 	public function actionClearCache()

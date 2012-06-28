@@ -36,11 +36,11 @@ class Category extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('listorder', 'numerical', 'integerOnly'=>true),
+			array('app_id, listorder', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, listorder', 'safe', 'on'=>'search'),
+			array('id, app_id, name, listorder', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,10 +62,19 @@ class Category extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'app_id' => '应用ID',
 			'name' => '名称',
 			'listorder' => '排序',
 		);
 	}
+
+    public function getAppList()
+    {
+        return array(
+            1 => 'sex',
+            2 => 'app2',
+        );
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

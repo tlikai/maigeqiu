@@ -16,6 +16,12 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'app_id'); ?>
+		<?php echo $form->dropDownList($model, 'app_id', $model->getAppList()); ?>
+		<?php echo $form->error($model,'app_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'listorder'); ?>
 		<?php echo $form->textField($model,'listorder'); ?>
 		<?php echo $form->error($model,'listorder'); ?>
