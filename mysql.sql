@@ -206,10 +206,3 @@ INSERT INTO `goods` VALUES(156, '[转卖]双线VPS|电信VPS|免备案VPS/VM|国
 INSERT INTO `goods` VALUES(157, '香港/国内BGP双线Linux虚拟主机空间/VPS免费试用专拍链接', NULL, 0.00, 1.00, 11, 1337872852, 1338477652, 'http://s.click.taobao.com/t_8?e=7HZ6jHSTbIWYLyOGnMpX1FNSI87LOuoL9eGbPK%2BYytBo%2BZHobJTYSjU3v6dNjk7D1h53HsflYHxh2eTNXGdkfk5zT7PGnXKqxLP5RbRnWkQpuWw%3D&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 'http://s.click.taobao.com/t_8?e=7HZ5x%2BOzcBsuG9Uq4df6Jrd%2FM271mT1ICkq0Oradz4uBK522%2F6WDviGGgqcJ1HdUMlZJB4Zxi0yfw%2BeG4VkcQjeDXhPs&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 1337935536, 'http://img03.taobaocdn.com/bao/uploaded/i3/T1KEvcXcNpXXbEyV_X_114146.jpg', '15622315817', 'chiwaichan', 0.02, 1.5, 11);
 INSERT INTO `goods` VALUES(158, '【秀当网独享】9.9元包邮 试用装 CC霜蚕丝面膜 美白 保湿', NULL, 9.90, 19.80, 5, 1337735665, 1338340465, 'http://s.click.taobao.com/t_8?e=7HZ6jHSTbIOVulO5p%2FWqR9KNZZpjHPfYA0YYcilNnkP8u2eoeL7HtyH5lzzMbT%2BG0msyKTOdZ0HAOM4V8FQgm6WAO6FjDQzq8VvnlE%2BTNXyxSvI%3D&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 'http://s.click.taobao.com/t_8?e=7HZ5x%2BOzcgLwYjuRODcVbnnnecePb8PQIvi5NND9XcHdoXF%2B1RBZMiNbKInJ%2BKEtVt9sg8QbKmvvN6bDy6RhqW%2FbBsBC&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 1337936678, 'http://img03.taobaocdn.com/bao/uploaded/i3/T1khKwXnV7XXcylWA1_040207.jpg', '13361455818', 'elijaheli泓毅专卖店', 1.29, 6.5, 5);
 INSERT INTO `goods` VALUES(159, '【秀当网独享】RS 夏季时尚 韩版卡通 可爱小熊假两件纯棉T恤', NULL, 9.88, 38.00, 554, 1337912670, 1338517470, 'http://s.click.taobao.com/t_8?e=7HZ6jHSTbIbr7BYftHmqmLqvj9kuqOtZplSvafyNfFVT3oUrKKIoCyG8pd19QzbcG28%2FOtm5FtRIBr4jACNg2L%2BXOkXFaM0hS3mmDOzCHRh8KQ%3D%3D&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 'http://s.click.taobao.com/t_8?e=7HZ5x%2BOzdZVomi13mJKPSd35bW4QELYC8tUHLyFi%2Fjdto5HjzpRpkk7sK%2B4ba5ZQvbbjF10ff1SH%2FFzplxBXQhXH38Q%3D&p=mm_10575377_0_0&n=19&spm=2014.12645927.1.0', 1337936678, 'http://img04.taobaocdn.com/bao/uploaded/i4/T1JuC.XcXbXXbfz_U8_102050.jpg', '16929824344', '翌云', 1.90, 5, 127);
-
-CREATE TABLE `category` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `listorder` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 
