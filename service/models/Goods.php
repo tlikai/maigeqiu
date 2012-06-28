@@ -71,9 +71,9 @@ class Goods extends CActiveRecord
 	}
 
 
-	public static function getGoodsCacheKey($page,$appId,$type)
+	public static function getGoodsCacheKey($page,$appId)
 	{
-		return 'goods_cache_'.$page.'_'.$appId.'_'.$type;
+		return 'goods_cache_'.$page.'_'.$appId;
 	}
 
 	public static function getGoodsCountCacheKey($page)
@@ -81,40 +81,28 @@ class Goods extends CActiveRecord
 		return 'goods_cache_count_'.$page;
 	}
 
-	public static function getGoods($page = 1 , $appId = 1 , $type = 'pop')
+	public static function getGoods($page = 1 , $appId = 1)
 	{
-		$data = Yii::app()->cache->get(self::getGoodsCacheKey($page,$appId,$type));
-		if($data == false)
+		$data = array( 'data'=>null );
+		$data = Yii::app()->cache->get(self::getGoodsCacheKey($page,$appId));
+		if($data['data'] == false)
 		{
-			$order = '';
-			switch ( $type )
-			{
-				case 'pop':
-					$order = 't.quantity DESC';
-					break;
-				case 'hot':
-					$order = 't.start_time DESC';
-					break;
-				case 'quantity':
-					$order = 't.quantity DESC';
-					break;
-			}
 			$criteria=new CDbCriteria;
 			$criteria->condition = 't.end_time > '.time();
-			$criteria ->order = $order;
+			$criteria ->order = 't.quantity DESC';
 			$count = Goods::model()->count($criteria);
 			$pager = new CPagination($count);
 			$pager ->pageSize = 39;
 			$pager ->applyLimit($criteria);
 			$data =  Goods::model()->findAll($criteria);  
 
-			if ( $appId != 1 || $type == 'pop') {
+			if ( $appId != 1) {
 				shuffle($data);
 			}
 
 			$data = array('data'=>$data,'pager'=>$pager);
 
-			Yii::app()->cache->set(self::getGoodsCacheKey($page,$appId,$type),$data,1800);
+			Yii::app()->cache->set(self::getGoodsCacheKey($page,$appId),$data,1800);
 		}
 		return $data;
 	}

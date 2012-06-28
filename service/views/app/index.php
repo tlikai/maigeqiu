@@ -74,7 +74,7 @@ foreach($data as $key => $val) {
 									</a>
 								</div>
 								<div class="buy_mask"></div>
-								<a target="_blank" href="<?php echo $val['url'];?>" class="buy_action clearfix"> <span class="price"><em>¥</em><?php echo ($val['price'] > 0) ? $val['price'] :$val['sale_price'];?></span> <b class="btn"></b> </a>
+								<a target="_blank" href="<?php echo $val['url'];?>" class="buy_action clearfix"> <span class="price"><em>¥</em><?php echo $val['price'];?></span> <b class="btn"></b> </a>
 							</div>
 						</li>
 <?php } ?>

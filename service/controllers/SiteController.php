@@ -30,20 +30,19 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$page = Yii::app()->request->getQuery('page','1');
+		
 		$appId = Yii::app()->params['appId'];
-		$type = Yii::app()->request->getQuery('type','pop');
-
 		switch ( $appId )
 		{
 			case '1':
-				$goods = Goods::getGoods($page,$appId,$type);
+				$goods = Goods::getGoods($page,$appId);
 				$this->render('index',array(
 					'data'=>$goods['data'],
 					'pager'=>$goods['pager'],
 				));
 			break;
 			case '2':
-				$goods = Goods::getGoods($page,$appId,$type);
+				$goods = Goods::getGoods($page,$appId);
 				$this->layout = 'app2';
 				$this->render('../app/index',array(
 					'data'=>$goods['data'],
@@ -51,6 +50,7 @@ class SiteController extends Controller
 				));
 			break;
 		} 
+		
 	}
 	
 	public function actionClearCache()

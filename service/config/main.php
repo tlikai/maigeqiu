@@ -45,10 +45,10 @@ return array(
 		 */
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=tbk;',
+			'connectionString' => 'mysql:host=localhost;dbname=tbk;port=8809',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'wubaiqing',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		'cache'=>array(
