@@ -6,6 +6,7 @@
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/crbj.css" rel="stylesheet" type="text/css"/>
     <script language="javascript" type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"/></script>
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
     <div id="main">

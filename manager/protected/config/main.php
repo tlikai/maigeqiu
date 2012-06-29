@@ -48,10 +48,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		'db'=>array(
 				
-			'connectionString' => 'mysql:host=localhost;dbname=tbk;',
+			'connectionString' => 'mysql:host=localhost;dbname=tbk;port=8809',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -77,8 +77,8 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-		'appkey' => '12645927',
-		'secretKey' => '046b321a6b99b6242c3a6d55c69d21f2',
+		'appkey' => '21028373',
+		'secretKey' => 'e305b7d3db58b01b860253a32a0885c5',
 		'pid'=>'10575377',
 		'start_price'=>1,
 		'end_price'=>60,

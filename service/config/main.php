@@ -7,8 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'后台管理',
-    'timeZone' => 'Asia/Shang',
+	'name'=>'成人街 - 淘宝应用',
+    // 'timeZone' => 'Asia/Shang',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -46,10 +46,10 @@ return array(
 		 */
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=tbk;',
+			'connectionString' => 'mysql:host=localhost;dbname=tbk;port=8809',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		'cache'=>array(

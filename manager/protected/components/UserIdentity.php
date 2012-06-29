@@ -20,9 +20,7 @@ class UserIdentity extends CUserIdentity
 		$users=array(
 			// username => password
 			//'demo'=>'demo',
-			'qidalin'=>'tumu',
 			'wubaiqing'=>'Wu21!q!ng',
-			'sunguosheng'=>'277832054',
             'likai' => '8120043',
 		);
 		if(!isset($users[$this->username]))

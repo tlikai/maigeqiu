@@ -84,7 +84,7 @@ class Goods extends CActiveRecord
 	public static function getGoods($appId = 1, $catId = 0, $page = 1)
 	{
 		$data = array('data'=>null);
-		$data = Yii::app()->cache->get(self::getGoodsCacheKey($appId, $catid, $page));
+		$data = Yii::app()->cache->get(self::getGoodsCacheKey($appId, $catId, $page));
 		if($data == false)
 		{
 			$criteria = new CDbCriteria;

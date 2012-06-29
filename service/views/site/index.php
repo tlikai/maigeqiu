@@ -1,10 +1,10 @@
 ﻿<!--头部开始-->
     <div class="header clearfix">
-        <div id="logo"><h1><a href="#">成人保健品<a></h1></div>
+        <div id="logo"><h1><a href="/">成人保健品<a></h1></div>
         <div id="wa"><p class="lx"><a href="#">卖家点此免费发布</a></p><p class="lx"><a href="#"><img src="images/ww.gif"/></a></p><p class="lx"><a href="#">联系客服</a></p></div>
         <div id="nav">
             <ul>
-                <li <?php if(empty($_GET['cat'])) : ?>class="def"<?php endif; ?>><a href="<?php echo Yii::app()->baseUrl; ?>">首页</a></li>
+                <li <?php if(empty($_GET['cat'])) : ?>class="def"<?php endif; ?>><a href="/">首页</a></li>
                 <?php foreach($cats as $id => $cat) : ?>
                 <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<? endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
                 <?php endforeach; ?>
@@ -44,10 +44,10 @@
                'prevPageLabel' => '上一页',  
                'nextPageLabel' => '下一页',  
                'pages' => $pager,  
-               'maxButtonCount'=>10,  
+               'maxButtonCount'=>5,  
                'cssFile'=>false,
                'htmlOptions'=>array(
-               'template'=>'<li><a href="{url}">{lable}</a></li>'
+              // 'template'=>'<li><a href="{url}">{lable}</a></li>'
                )
             ));  
             ?>

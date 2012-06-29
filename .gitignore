@@ -4,3 +4,5 @@
 .DS_Store
 runtime/*
 assets/*
+manager/assets/*
+service/runtime/*

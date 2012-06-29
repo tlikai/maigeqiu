@@ -1010,3 +1010,61 @@ in /data/www/manager/index.php (17)
 2012/05/31 19:37:46 [warning] [application] Failed to set unsafe attribute "sort" of "Goods".
 in /data/www/manager/protected/controllers/GoodsController.php (72)
 in /data/www/manager/index.php (17)
+2012/06/29 10:14:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection 无法开启数据库连线: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /web/maigeqiu/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /web/maigeqiu/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /web/maigeqiu/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /web/maigeqiu/framework/base/CModule.php(388): CDbConnection->init()
+#3 /web/maigeqiu/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /web/maigeqiu/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /web/maigeqiu/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /web/maigeqiu/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Goods))
+#7 /web/maigeqiu/framework/db/ar/CActiveRecord.php(394): CActiveRecord::model('Goods')
+#8 /web/maigeqiu/framework/db/ar/CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 /web/maigeqiu/manager/protected/controllers/GoodsController.php(272): CActiveRecord->__construct('search')
+#10 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): GoodsController->actionAdmin()
+#11 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /web/maigeqiu/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 /web/maigeqiu/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /web/maigeqiu/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 /web/maigeqiu/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 /web/maigeqiu/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 /web/maigeqiu/framework/web/CController.php(292): CFilterChain->run()
+#18 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('admin')
+#20 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('goods/admin')
+#21 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#22 /web/maigeqiu/manager/index.php(17): CApplication->run()
+#23 {main}
+REQUEST_URI=/index.php?r=goods/admin
+HTTP_REFERER=http://manager.tb.com/index.php
+---
+2012/06/29 10:14:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection 无法开启数据库连线: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /web/maigeqiu/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /web/maigeqiu/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /web/maigeqiu/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /web/maigeqiu/framework/base/CModule.php(388): CDbConnection->init()
+#3 /web/maigeqiu/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /web/maigeqiu/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /web/maigeqiu/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /web/maigeqiu/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Category))
+#7 /web/maigeqiu/framework/db/ar/CActiveRecord.php(394): CActiveRecord::model('Category')
+#8 /web/maigeqiu/framework/db/ar/CActiveRecord.php(78): CActiveRecord->getMetaData()
+#9 /web/maigeqiu/manager/protected/controllers/CategoryController.php(134): CActiveRecord->__construct('search')
+#10 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): CategoryController->actionAdmin()
+#11 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /web/maigeqiu/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#13 /web/maigeqiu/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#14 /web/maigeqiu/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#15 /web/maigeqiu/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#16 /web/maigeqiu/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#17 /web/maigeqiu/framework/web/CController.php(292): CFilterChain->run()
+#18 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('admin')
+#20 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('category/admin')
+#21 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#22 /web/maigeqiu/manager/index.php(17): CApplication->run()
+#23 {main}
+REQUEST_URI=/index.php?r=category/admin
+HTTP_REFERER=http://manager.tb.com/index.php
+---

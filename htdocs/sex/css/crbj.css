@@ -1,4 +1,4 @@
-锘縝ody{background:#ffffff;url(../images/bg.jpg) repeat-x;}
+body{background:#ffffff;url(../images/bg.jpg) repeat-x;}
 #main{margin:0 auto;width:1000px;}
 /*
 .header{height:126px;position:relative;background:url(../images/5.jpg);}
@@ -18,13 +18,13 @@
   #nav li a{display:block;padding-left:20px;padding-right:20px;color:#ffffff;}
   #nav li a:hover,.def{display:block;background:#c03d65;color:#ffffff;}
   
-  /*浜у搧鍒楄〃*/
+  /*产品列表*/
 .product_list {width:1000px;overflow:hidden;margin-bottom:10px;zoom:1;background:#ffffff;margin-top:10px;padding-top:5px;}
 .product_list ul {margin-left:-28px;overflow:hidden;zoom:1;}
 .product_list li {position:relative;float:left;width:311px;height:440px;overflow:hidden;margin-left:31px;_display:inline;}
 .pro_info {position:relative;float:left;width:298px;height:381px;border:1px solid #E4E4E4;border-bottom:0 none;z-index:2;}
 .product_list li:hover .pro_info {border:1px solid #D32F2E;border-bottom:0 none;}
-.pro_info .pic {width:280px;height:280px;overflow:hidden;padding-bottom:22px;margin:30px auto 0;background:url(./bg_pro.png) no-repeat bottom center;}
+.pro_info .pic {width:280px;height:280px;overflow:hidden;padding-bottom:22px;margin:30px auto 0;background:url(../images/bg_pro.png) no-repeat bottom center;}
 .pro_info .pic . {display:block;width:280px;height:280px;}
 
 
@@ -45,9 +45,9 @@
 .buy_now {position:absolute;top:4px;right:11px;width:109px;height:39px;background-position:1000px 1000px;text-indent:-9999px;}
 .buy_now:hover {background-position:-180px -118px;}
 
-/*浜у搧缈婚〉*/
+/*产品翻页*/
 #pages{width:1000px;height:43px;}
-#pages .page_box{width:428px;height:43px;line-height:36px;margin:0 auto;}
+#pages .page_box{width:508px;height:43px;line-height:36px;margin:0 auto;}
 #pages ul{margin-left:-10px;}
 #pages li{float:left;margin-left:10px;}
 #pages li a{display:block;padding-left:10px;padding-right:10px;border:1px solid #ebebeb;color:#fa5689;}

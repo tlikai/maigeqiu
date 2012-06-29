@@ -3078,3 +3078,113 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/
 ---
+2012/06/29 09:52:30 [error] [php] Undefined variable: catid (/web/maigeqiu/service/models/Goods.php:87)
+Stack trace:
+#0 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams()
+#1 /web/maigeqiu/framework/web/CController.php(287): SiteController->runAction()
+#2 /web/maigeqiu/framework/web/CController.php(266): SiteController->runActionWithFilters()
+#3 /web/maigeqiu/framework/web/CWebApplication.php(276): SiteController->run()
+#4 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController()
+#5 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#6 /web/maigeqiu/htdocs/sex/index.php(14): CWebApplication->run()
+REQUEST_URI=/
+in /web/maigeqiu/service/models/Goods.php (87)
+in /web/maigeqiu/service/controllers/SiteController.php (43)
+in /web/maigeqiu/htdocs/sex/index.php (14)
+2012/06/29 09:54:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /web/maigeqiu/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /web/maigeqiu/framework/db/CDbConnection.php(331): CDbConnection->open()
+#1 /web/maigeqiu/framework/db/CDbConnection.php(309): CDbConnection->setActive(true)
+#2 /web/maigeqiu/framework/base/CModule.php(388): CDbConnection->init()
+#3 /web/maigeqiu/framework/base/CApplication.php(431): CModule->getComponent('db')
+#4 /web/maigeqiu/framework/db/ar/CActiveRecord.php(615): CApplication->getDb()
+#5 /web/maigeqiu/framework/db/ar/CActiveRecord.php(2263): CActiveRecord->getDbConnection()
+#6 /web/maigeqiu/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Goods))
+#7 /web/maigeqiu/service/models/Goods.php(32): CActiveRecord::model('Goods')
+#8 /web/maigeqiu/service/models/Goods.php(94): Goods::model()
+#9 /web/maigeqiu/service/controllers/SiteController.php(43): Goods::getGoods('1', 0, 1)
+#10 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#11 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#12 /web/maigeqiu/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#13 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('')
+#15 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#16 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#17 /web/maigeqiu/htdocs/sex/index.php(14): CApplication->run()
+#18 {main}
+REQUEST_URI=/
+---
+2012/06/29 09:56:36 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tbk.category' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `category`.
+in /web/maigeqiu/service/models/Category.php (19)
+in /web/maigeqiu/service/controllers/SiteController.php (44)
+in /web/maigeqiu/htdocs/sex/index.php (14)
+2012/06/29 09:56:36 [error] [exception.CDbException] exception 'CDbException' with message 'The table "category" for active record class "Category" cannot be found in the database.' in /web/maigeqiu/framework/db/ar/CActiveRecord.php:2264
+Stack trace:
+#0 /web/maigeqiu/framework/db/ar/CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Category))
+#1 /web/maigeqiu/service/models/Category.php(19): CActiveRecord::model('Category')
+#2 /web/maigeqiu/service/controllers/SiteController.php(44): Category::model()
+#3 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#4 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#5 /web/maigeqiu/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#6 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('')
+#8 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#9 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /web/maigeqiu/htdocs/sex/index.php(14): CApplication->run()
+#11 {main}
+REQUEST_URI=/
+---
+2012/06/29 10:10:30 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.title" is not defined.' in /web/maigeqiu/framework/base/CComponent.php:131
+Stack trace:
+#0 /web/maigeqiu/service/views/layouts/main.php(9): CComponent->__get('title')
+#1 /web/maigeqiu/framework/web/CBaseController.php(127): require('/web/maigeqiu/s...')
+#2 /web/maigeqiu/framework/web/CBaseController.php(96): CBaseController->renderInternal('/web/maigeqiu/s...', Array, true)
+#3 /web/maigeqiu/framework/web/widgets/CContentDecorator.php(77): CBaseController->renderFile('/web/maigeqiu/s...', Array, true)
+#4 /web/maigeqiu/framework/web/widgets/CContentDecorator.php(55): CContentDecorator->decorate('<div id="conten...')
+#5 /web/maigeqiu/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput('<div id="conten...')
+#6 /web/maigeqiu/framework/web/CBaseController.php(207): COutputProcessor->run()
+#7 /web/maigeqiu/framework/web/CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
+#8 /web/maigeqiu/service/views/layouts/column1.php(5): CBaseController->endContent()
+#9 /web/maigeqiu/framework/web/CBaseController.php(127): require('/web/maigeqiu/s...')
+#10 /web/maigeqiu/framework/web/CBaseController.php(96): CBaseController->renderInternal('/web/maigeqiu/s...', Array, true)
+#11 /web/maigeqiu/framework/web/CController.php(785): CBaseController->renderFile('/web/maigeqiu/s...', Array, true)
+#12 /web/maigeqiu/service/controllers/SiteController.php(50): CController->render('index', Array)
+#13 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#14 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#15 /web/maigeqiu/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#16 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('')
+#18 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#19 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#20 /web/maigeqiu/htdocs/sex/index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/
+HTTP_REFERER=http://tb.com/index.php?r=site/index&cat=1
+---
+2012/06/29 10:10:31 [error] [exception.CException] exception 'CException' with message 'Property "SiteController.title" is not defined.' in /web/maigeqiu/framework/base/CComponent.php:131
+Stack trace:
+#0 /web/maigeqiu/service/views/layouts/main.php(9): CComponent->__get('title')
+#1 /web/maigeqiu/framework/web/CBaseController.php(127): require('/web/maigeqiu/s...')
+#2 /web/maigeqiu/framework/web/CBaseController.php(96): CBaseController->renderInternal('/web/maigeqiu/s...', Array, true)
+#3 /web/maigeqiu/framework/web/widgets/CContentDecorator.php(77): CBaseController->renderFile('/web/maigeqiu/s...', Array, true)
+#4 /web/maigeqiu/framework/web/widgets/CContentDecorator.php(55): CContentDecorator->decorate('<div id="conten...')
+#5 /web/maigeqiu/framework/web/widgets/COutputProcessor.php(45): CContentDecorator->processOutput('<div id="conten...')
+#6 /web/maigeqiu/framework/web/CBaseController.php(207): COutputProcessor->run()
+#7 /web/maigeqiu/framework/web/CBaseController.php(301): CBaseController->endWidget('CContentDecorat...')
+#8 /web/maigeqiu/service/views/layouts/column1.php(5): CBaseController->endContent()
+#9 /web/maigeqiu/framework/web/CBaseController.php(127): require('/web/maigeqiu/s...')
+#10 /web/maigeqiu/framework/web/CBaseController.php(96): CBaseController->renderInternal('/web/maigeqiu/s...', Array, true)
+#11 /web/maigeqiu/framework/web/CController.php(785): CBaseController->renderFile('/web/maigeqiu/s...', Array, true)
+#12 /web/maigeqiu/service/controllers/SiteController.php(50): CController->render('index', Array)
+#13 /web/maigeqiu/framework/web/actions/CInlineAction.php(50): SiteController->actionIndex()
+#14 /web/maigeqiu/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#15 /web/maigeqiu/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#16 /web/maigeqiu/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /web/maigeqiu/framework/web/CWebApplication.php(276): CController->run('')
+#18 /web/maigeqiu/framework/web/CWebApplication.php(135): CWebApplication->runController('')
+#19 /web/maigeqiu/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#20 /web/maigeqiu/htdocs/sex/index.php(14): CApplication->run()
+#21 {main}
+REQUEST_URI=/
+HTTP_REFERER=http://tb.com/index.php?r=site/index&cat=1
+---
