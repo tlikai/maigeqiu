@@ -6,7 +6,7 @@
             <ul>
                 <li <?php if(empty($_GET['cat'])) : ?>class="def"<?php endif; ?>><a href="/">首页</a></li>
                 <?php foreach($cats as $id => $cat) : ?>
-                <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<? endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
+                <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<?php endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -21,7 +21,7 @@
           <div class="pro_info">
           <h2 class="pro_tit"><strong>【17号10点】</strong><a target="_blank" href="<?php echo $val['url']; ?>"><?php echo $val['title']; ?></a></h2>
               <div class="pic"><a target="_blank" href="<?php echo $val['url']; ?>"><img src="<?php echo $val['image_url']; ?>" alt="<?php echo $val['title']; ?>_310x310.jpg" height="280" width="280"></a></div>
-              <ins class="our_price">¥<?php echo $val['sale_price']; ?></ins> 
+              <ins class="our_price">￥<?php echo $val['sale_price']; ?></ins> 
           </div>
           <div class="buy_pro"> 
               <a class="buy_now" target="_blank" href="<?php echo $val['url'] ?>">去购买</a> 
