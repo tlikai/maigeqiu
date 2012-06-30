@@ -1,4 +1,4 @@
-﻿<!--头部开始-->
+<!--头部开始-->
     <div class="header clearfix">
         <div id="logo"><h1><a href="/">成人保健品<a></h1></div>
 		<div id="wa"><img src="images/ww.png"/></div>
