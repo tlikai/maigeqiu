@@ -7,6 +7,13 @@
     <link href="<?php echo Yii::app()->baseUrl; ?>/css/crbj.css" rel="stylesheet" type="text/css"/>
     <script language="javascript" type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"/></script>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <script>
+       (function(){
+          var ac = document.createElement('script'); ac.type = 'text/javascript'; ac.async = true;
+          ac.src =  'http://a.tbcdn.cn/apps/stargate/ac/js/proxy.js?t='+new Date().getTime();
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ac, s);
+       })();
+    </script>
 </head>
 <body>
     <div id="main">

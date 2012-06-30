@@ -1,12 +1,12 @@
 ﻿<!--头部开始-->
     <div class="header clearfix">
         <div id="logo"><h1><a href="/">成人保健品<a></h1></div>
-        <div id="wa"><p class="lx"><a href="#">卖家点此免费发布</a></p><p class="lx"><a href="#"><img src="images/ww.gif"/></a></p><p class="lx"><a href="#">联系客服</a></p></div>
+		<div id="wa"><img src="images/ww.png"/></div>
         <div id="nav">
             <ul>
                 <li <?php if(empty($_GET['cat'])) : ?>class="def"<?php endif; ?>><a href="/">首页</a></li>
                 <?php foreach($cats as $id => $cat) : ?>
-                <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<? endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
+                <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<?php endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -19,12 +19,12 @@
         <?php foreach($data as $key => $val) : ?>
         <li>
           <div class="pro_info">
-          <h2 class="pro_tit"><strong>【17号10点】</strong><a target="_blank" href="<?php echo $val['url']; ?>"><?php echo $val['title']; ?></a></h2>
+          <h2 class="pro_tit"><strong>【打折商品】</strong><a target="_blank" href="<?php echo $val['url']; ?>"><?php echo $val['title']; ?></a></h2>
               <div class="pic"><a target="_blank" href="<?php echo $val['url']; ?>"><img src="<?php echo $val['image_url']; ?>" alt="<?php echo $val['title']; ?>_310x310.jpg" height="280" width="280"></a></div>
               <ins class="our_price">¥<?php echo $val['sale_price']; ?></ins> 
           </div>
           <div class="buy_pro"> 
-              <a class="buy_now" target="_blank" href="<?php echo $val['url'] ?>">去购买</a> 
+              <a class="buy_now" target="_blank" href="<?php echo $val['url']; ?>">去购买</a> 
           </div>
         </li>
         <?php endforeach; ?>
