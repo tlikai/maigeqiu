@@ -68,6 +68,11 @@ class Category extends CActiveRecord
 		);
 	}
 
+    /**
+     * 获取应用列表
+     *
+     * @return array
+     */
     public function getAppList()
     {
         return array(
@@ -75,6 +80,25 @@ class Category extends CActiveRecord
             2 => 'app2',
         );
     }
+
+    /**
+     * 根据应用ID获取分类
+     *
+     * @param  integer $appId
+     * @return array
+     */
+    public function getByAppId($appId)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->index = 'id';
+        $criteria->condition = 'app_id=:app_id';
+        $criteria->params = array(
+            ':app_id' => $appId,
+        );
+        $criteria->order = 'listorder DESC';
+        return $this->findAll($criteria);
+    }
+    
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
