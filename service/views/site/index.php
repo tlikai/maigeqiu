@@ -20,7 +20,7 @@
         <li>
           <div class="pro_info">
           <h2 class="pro_tit"><strong>【打折商品】</strong><a target="_blank" href="<?php echo $val['url']; ?>"><?php echo $val['title']; ?></a></h2>
-              <div class="pic"><a target="_blank" href="<?php echo $val['url']; ?>"><img src="<?php echo $val['image_url']; ?>" alt="<?php echo $val['title']; ?>_310x310.jpg" height="280" width="280"></a></div>
+              <div class="pic"><a target="_blank" href="<?php echo $val['url']; ?>"><img src="<?php echo $val['image_url']; ?>_310x310.jpg" alt="<?php echo $val['title']; ?>" height="280" width="280"></a></div>
               <ins class="our_price">￥<?php echo $val['sale_price']; ?></ins> 
           </div>
           <div class="buy_pro"> 
