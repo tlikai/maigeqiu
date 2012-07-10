@@ -49,6 +49,42 @@ class SiteController extends Controller
             'pager' => $goods['pager'],
         ));
 	}
+
+    public function actionSearch()
+    {
+		$appId = Yii::app()->params['appId'];
+        $cats = Category::model()->getByAppId($appId);
+        $catId = Yii::app()->request->getQuery('cat', 0);
+        $price = Yii::app()->request->getQuery('price', 0);
+        $sort = Yii::app()->request->getQuery('sort', 'price');
+        $order = Yii::app()->request->getQuery('order', 'desc');
+        $keyword = Yii::app()->request->getQuery('keyword', '');
+        $dataProvider = null;
+
+        if(!empty($keyword))
+        {
+            $criteria = new CDbCriteria();
+            $criteria->compare('end_time', '>' . time());
+            $criteria->compare('title', $keyword, true);
+            $catId && $criteria->compare('cat_id', $catId);
+            $price && $criteria->compare('price', '<=' . $price);
+
+            if(!in_array($sort, array('price', 'time')))
+                $sort = 'time';
+            if(!in_array($order, array('asc', 'desc')))
+                $order = 'desc';
+            $criteria->order = $sort . ' ' . $order;
+
+            $dataProvider = new CActiveDataProvider('Goods', array(
+                'criteria' => $criteria
+            ));
+        }
+
+        $this->render('search', array(
+            'cats' => $cats,
+            'dataProvider' => $dataProvider,
+        ));
+    }
 	
 	public function actionClearCache()
 	{
