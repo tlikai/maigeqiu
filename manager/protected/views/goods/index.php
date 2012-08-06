@@ -15,6 +15,8 @@
 	<?php echo $form->textField($model,'keyword'); ?>
 	<strong>淘宝ID</strong>
 	<?php echo $form->textField($model,'tbid'); ?>
+	<strong>分类</strong>
+	<?php echo $form->dropDownList($model, 'cat_id', CHtml::listData($cats, 'id', 'name')); ?>
 	<strong>页数</strong>
 	<select name="Goods[page]">
 
