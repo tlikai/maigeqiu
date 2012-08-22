@@ -81,6 +81,44 @@ class Category extends CActiveRecord
 		);
 	}
 	
+	public static function getParentCategoryCache( $parentId ) {
+		return 'get_parent_category_cache_'.$parentId;
+	}
+	
+	
+	public static function getCategoryNames( $parentId = '0' )
+	{
+		$data = false;
+		$data = Yii::app()->cache->get(self::getParentCategoryCache( $parentId ) );
+		
+		if ( $data != false ) {
+			return $data;
+		}
+		
+		$categoryResult = self::model()->findALl( array (
+			'condition' => 'parent_id=:parent_id',
+			'params'	=> array( ':parent_id' => $parentId),
+			'order'		=> 'listorder ASC',
+		));
+		
+		$tmpArray = array();
+		
+		foreach( $categoryResult as $key => $val )
+		{
+			$tmpArray[ $val->id ] = $val->name;
+		}
+		Yii::app()->cache->set(self::getParentCategoryCache( $parentId ) , $tmpArray , 3600 );
+		
+		return $tmpArray;
+		
+	}
+	
+	
+	public function getByAppIdCacheKey( $appId )
+	{
+		return 'get_by_app_id_cache_key'.$appId;
+		
+	}
 
     /**
      * 根据应用ID获取分类
@@ -88,11 +126,18 @@ class Category extends CActiveRecord
      * @param  integer $appId
      * @return array
      */
-    public function getByAppId($appId)
+    public function getByAppId($appId = '11' )
     {
+    	$data = false;
+    	$data = Yii::app()->cache->get( self::getByAppIdCacheKey( $appId ) );
+    	if ( $data != false ) {
+    		return $data;
+    	}
+    	
+    	
         $criteria = new CDbCriteria();
         $criteria->index = 'id';
-        $criteria->condition = 'app_id=:app_id';
+        $criteria->condition = 'parent_id=:app_id';
         $criteria->params = array(
             ':app_id' => $appId,
         );

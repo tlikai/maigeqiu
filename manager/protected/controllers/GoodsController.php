@@ -62,7 +62,6 @@ class GoodsController extends Controller
 			$existence = Goods::checkTbId($tbId);
 			if ( $existence ) {
 				$model=$this->loadModel($existence->id);
-				
 			}
 
 

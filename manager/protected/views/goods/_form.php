@@ -18,7 +18,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'cat_id'); ?>
 		<select name="Goods[cat_id]" id="Goods_cat_id">
-		<?php $treeArr = Category::getTree(); echo $treeArr;?>
+		<?php $treeArr = Category::getTree( '顶级分类' , $model->cat_id - 1 ); echo $treeArr;?>
 		</select>
 		<?php echo $form->error($model,'cat_id'); ?>
 	</div>

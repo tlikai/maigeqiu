@@ -46,7 +46,7 @@ class Category extends CActiveRecord
 	}
 
 	
-	public static function getTree( $categoryName = '顶级分类' )
+	public static function getTree( $categoryName = '顶级分类' , $sid = '-1')
 	{
 		$get_actions = self::model()->findAll();
 		$actions_array = array();
@@ -57,7 +57,7 @@ class Category extends CActiveRecord
 		// 下拉列表
 		$tree_arr  = '<option value="0" selected>'.$categoryName.'</option>';
 		Tree::$arr = $actions_array;
-		$tree_arr .= Tree::getTree(0,"<option value=\$id \$selected>\$spacer\$name</option>",'-1',true);
+		$tree_arr .= Tree::getTree(0,"<option value=\$id \$selected>\$spacer\$name</option>",$sid,true);
 		return $tree_arr;
 	}
 	

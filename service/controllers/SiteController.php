@@ -2,6 +2,60 @@
 
 class SiteController extends Controller
 {
+	
+	public $categoryFlag = array(
+		'1' => array(
+			'id' => 'ladies',
+			'title' => '精选百款初夏爆款 全场享特惠惊喜价',
+			'more'	=> '更多特价女装',
+		),
+		'2'	=> array(
+			'id' => 'men',
+			'title' => '百搭T恤 潮流所选',
+			'more'	=> '更多特价男装',
+		),
+		'3'	=> array(
+			'id' => 'shoes',
+			'title'=>'潮范儿凉鞋 疯狂促销',
+			'more' => '更多款特价男女鞋',
+		),
+		'4' => array(
+			'id' => 'bags',
+			'title' => '改变只需要一点装饰',
+			'more' => '更多款特价商品',
+		),
+		'5'	=> array(
+			'id' => 'baby',
+			'title' => '辣妈潮童精品，火热促销',
+			'more' => '更多款特价商品',
+		),
+		'6' => array(
+			'id' => 'home',
+			'title' => '百货品质大促 汇聚全网精品',
+			'more' => '更多款特价商品',
+		),
+		'7' => array(
+			'id' => 'beauty',
+			'title' => '护肤精选特惠中 打响防晒保卫战',
+			'more' => '更多款特价商品',
+		),
+		'8' => array(
+			'id' => 'food',
+			'title' => '夏日美味享不停',
+			'more' => '更多款特价商品',
+		),
+		'9' => array(
+			'id' => 'digit',
+			'title' => '酷暑冰凉家电促',
+			'more' => '更多款特价商品',
+		),
+		'10'=> array(
+			'id' => 'outdoors',
+			'title' => '城市运动 维护健康',
+			'more' => '更多款特价商品',
+		)
+			
+	);
 	/**
 	 * Declares class-based actions.
 	 */
@@ -28,19 +82,20 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		$page = Yii::app()->request->getQuery('page', 1);
-        $catId = Yii::app()->request->getQuery('cat', 0);
+        $catId = Yii::app()->request->getQuery('cat', null );
 		$appId = Yii::app()->params['appId'];
 
         $view = 'index';
         $layout = $this->layout;
 
         $goods = Goods::getGoods($appId, $catId, $page);
-        $cats = Category::model()->getByAppId( '2' );
+        $cats = Category::model()->getByAppId( $catId  );
         $this->layout = $layout;
         $this->render($view, array(
             'cats' => $cats,
             'data' => $goods['data'],
             'pager' => $goods['pager'],
+        	'catId' => $catId,
         ));
 	}
 

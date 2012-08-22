@@ -69,6 +69,32 @@ class Goods extends CActiveRecord
 		return array(
 		);
 	}
+	
+	public static function getRecommentGoodsCacheKey( $number ) {
+		return 'goods_recomment_'.$number;
+	}
+	
+	/**
+	 * 获取推荐商品
+	 * @param unknown_type $number
+	 */
+	public static function getRecommentGoods( $number = '3' )
+	{
+		$data = false;
+		$data = Yii::app()->cache->get( self::getRecommentGoodsCacheKey( $number ) );
+		
+		if ( $data != false ) {
+			return $data;
+		}
+		
+		$goods = self::model()->findAll( array (
+			'limit' => '3',
+			'order' => 'recommend Desc',
+		) );
+		
+		Yii::app()->cache->set( self::getRecommentGoodsCacheKey( $number ) , $goods , 3600 );
+		return $goods;
+	}
 
 
 	public static function getGoodsCacheKey($appId, $catId, $page)
@@ -81,6 +107,8 @@ class Goods extends CActiveRecord
 		return 'goods_cache_count_'.$catId.'_'.$page;
 	}
 
+	
+	
 	public static function getGoods($appId = 1, $catId = 0, $page = 1)
 	{
 		$data = array('data'=>null);
@@ -93,7 +121,7 @@ class Goods extends CActiveRecord
             $catId && $criteria->compare('cat_id', $catId);
 			$count = Goods::model()->count($criteria);
 			$pager = new CPagination($count);
-			$pager->pageSize = 39;
+			$pager->pageSize = 10;
 			$pager->applyLimit($criteria);
 			$data =  Goods::model()->findAll($criteria);
 
