@@ -207,6 +207,7 @@ class GoodsController extends Controller
 					$goods->image_url = $val['pic_url'];
 					$goods->commission_rate = $val['commission_rate'] / 100;
 					$goods->sort = $val['volume'];
+					$goods->cat_id = intval($_POST['Goods']['cat_id']);
 					// Goods::processingPromotion($val['num_iid']);
 
 					if ( $goods->save() )
@@ -256,9 +257,12 @@ class GoodsController extends Controller
 			}
 		}
 
+		$cats = Category::model()->findAll();
+		array_unshift($cats, array('id' => 0, 'name' => '无'));
 
 		$this->render('index',array(
 			'model'=>$model,
+			'cats' => $cats,
 			'list'=>$list,
 			'errorList'=>$errorList,
 		));

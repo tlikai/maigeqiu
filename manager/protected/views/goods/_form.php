@@ -15,6 +15,12 @@
 		<input type="button" id="taoButton" value="采集"/>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'cat_id'); ?>
+		<?php echo $form->dropDownList($model,'cat_id', CHtml::listData(Category::model()->findAll(), 'id', 'name')); ?>
+		<?php echo $form->error($model,'cat_id'); ?>
+	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>

@@ -49,7 +49,7 @@ class Goods extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, url, shop_url', 'required'),
-			array('quantity, start_time, end_time, add_time', 'numerical', 'integerOnly'=>true),
+			array('cat_id, quantity, start_time, end_time, add_time', 'numerical', 'integerOnly'=>true),
 			array('price, sale_price', 'numerical'),
 			array('title, url, shop_url, image_url,shop_name', 'length', 'max'=>255),
 			array('short_title,tb_id', 'length', 'max'=>100),
@@ -87,6 +87,7 @@ class Goods extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'cat_id' => '分类',
 			'title' => '标题',
 			'short_title' => '自定义标题',
 			'price' => '现价',
