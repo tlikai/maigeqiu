@@ -6,3 +6,4 @@ runtime/*
 assets/*
 manager/assets/*
 service/runtime/*
+service/runtime/application.log
