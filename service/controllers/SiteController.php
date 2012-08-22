@@ -34,14 +34,8 @@ class SiteController extends Controller
         $view = 'index';
         $layout = $this->layout;
 
-        if($appId == 2)
-        {
-            $view = '../app/index';
-            $layout = 'app2';
-        }
-
         $goods = Goods::getGoods($appId, $catId, $page);
-        $cats = Category::model()->getByAppId($appId);
+        $cats = Category::model()->getByAppId( '2' );
         $this->layout = $layout;
         $this->render($view, array(
             'cats' => $cats,

@@ -51,7 +51,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=tbk',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'codebrother',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(

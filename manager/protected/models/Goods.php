@@ -49,14 +49,14 @@ class Goods extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, url, shop_url', 'required'),
-			array('cat_id, quantity, start_time, end_time, add_time', 'numerical', 'integerOnly'=>true),
+			array('cat_id, quantity, start_time, end_time,recommend, add_time', 'numerical', 'integerOnly'=>true),
 			array('price, sale_price', 'numerical'),
 			array('title, url, shop_url, image_url,shop_name', 'length', 'max'=>255),
 			array('short_title,tb_id', 'length', 'max'=>100),
 			// array('tb_id','checkTbId'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, tb_id,shop_name,commission,short_title, price, sale_price, quantity, start_time, end_time, url, shop_url, add_time, image_url', 'safe', 'on'=>'search'),
+			array('id, title, tb_id,shop_name,recommend,commission,short_title, price, sale_price, quantity, start_time, end_time, url, shop_url, add_time, image_url', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -103,7 +103,8 @@ class Goods extends CActiveRecord
 			'commission' => '佣金',
 			'commission_rate' => '佣金率',
 			'sort' => '排序',
-			'tb_id'=>'淘宝ID'
+			'tb_id'=>'淘宝ID',
+			'recommend' => '推荐商品',
 		);
 	}
 
@@ -131,6 +132,7 @@ class Goods extends CActiveRecord
 		$criteria->compare('add_time',$this->add_time);
 		$criteria->compare('image_url',$this->image_url,true);
 		$criteria->compare('tb_id',$this->tb_id,true);
+		$criteria->compare('recommend',$this->recommend,true);
 		$criteria->order = 't.id Desc';
 
 		return new CActiveDataProvider($this, array(

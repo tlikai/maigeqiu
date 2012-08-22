@@ -73,13 +73,14 @@ class Category extends CActiveRecord
      *
      * @return array
      */
-    public function getAppList()
-    {
-        return array(
-            1 => 'sex',
-            2 => 'app2',
-        );
-    }
+	public function getAppList()
+	{
+		return array(
+				1 => '9块9包邮',
+				2 => '更多特价商品',
+		);
+	}
+	
 
     /**
      * 根据应用ID获取分类
@@ -95,7 +96,7 @@ class Category extends CActiveRecord
         $criteria->params = array(
             ':app_id' => $appId,
         );
-        $criteria->order = 'listorder DESC';
+        $criteria->order = 'listorder ASC';
         return $this->findAll($criteria);
     }
     

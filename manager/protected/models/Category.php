@@ -35,15 +35,32 @@ class Category extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				
 			array('name', 'required'),
-			array('app_id, listorder', 'numerical', 'integerOnly'=>true),
+			array('app_id, listorder,parent_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, app_id, name, listorder', 'safe', 'on'=>'search'),
+			array('id, app_id, name, listorder,parent_id', 'safe', 'on'=>'search'),
 		);
 	}
 
+	
+	public static function getTree( $categoryName = '顶级分类' )
+	{
+		$get_actions = self::model()->findAll();
+		$actions_array = array();
+	
+		foreach($get_actions as $key => $val){
+			$actions_array[] = array('id'=>$val->id,'parent_id'=>$val->parent_id,'name'=>$val->name);
+		}
+		// 下拉列表
+		$tree_arr  = '<option value="0" selected>'.$categoryName.'</option>';
+		Tree::$arr = $actions_array;
+		$tree_arr .= Tree::getTree(0,"<option value=\$id \$selected>\$spacer\$name</option>",'-1',true);
+		return $tree_arr;
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -62,17 +79,17 @@ class Category extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'app_id' => '应用ID',
+			'app_id' => '应用',
 			'name' => '名称',
 			'listorder' => '排序',
+			'parent_id' => '所属分类',
 		);
 	}
 
     public function getAppList()
     {
         return array(
-            1 => 'sex',
-            2 => 'app2',
+            1 => '主站',
         );
     }
 
