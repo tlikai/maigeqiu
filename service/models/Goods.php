@@ -97,9 +97,9 @@ class Goods extends CActiveRecord
 	}
 
 
-	public static function getGoodsCacheKey($appId, $catId, $page)
+	public static function getGoodsCacheKey($appId, $catId, $page,$limit)
 	{
-        return 'goods_cache_'.$appId.'_'.$catId.'_'.$page;
+        return 'goods_cache_'.$appId.'_'.$catId.'_'.$page.'_'.$limit;
 	}
 
 	public static function getGoodsCountCacheKey($catId, $page)
@@ -109,10 +109,10 @@ class Goods extends CActiveRecord
 
 	
 	
-	public static function getGoods($appId = 1, $catId = 0, $page = 1)
+	public static function getGoods($appId = 1, $catId = 0, $page = 1 , $limit = '10')
 	{
 		$data = array('data'=>null);
-		$data = Yii::app()->cache->get(self::getGoodsCacheKey($appId, $catId, $page));
+		$data = Yii::app()->cache->get(self::getGoodsCacheKey($appId, $catId, $page,$limit));
 		if($data == false)
 		{
 			$criteria = new CDbCriteria;
@@ -121,7 +121,7 @@ class Goods extends CActiveRecord
             $catId && $criteria->compare('cat_id', $catId);
 			$count = Goods::model()->count($criteria);
 			$pager = new CPagination($count);
-			$pager->pageSize = 10;
+			$pager->pageSize = $limit;
 			$pager->applyLimit($criteria);
 			$data =  Goods::model()->findAll($criteria);
 
@@ -131,7 +131,7 @@ class Goods extends CActiveRecord
 
 			$data = array('data'=>$data,'pager'=>$pager);
 
-			Yii::app()->cache->set(self::getGoodsCacheKey($appId, $catId, $page),$data,1800);
+			Yii::app()->cache->set(self::getGoodsCacheKey($appId, $catId, $page,$limit),$data,1800);
 		}
 		return $data;
 	}
