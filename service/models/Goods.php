@@ -117,7 +117,8 @@ class Goods extends CActiveRecord
 		{
 			$criteria = new CDbCriteria;
 			$criteria->condition = 't.end_time > '.time();
-			$criteria ->order = 't.quantity DESC';
+			$criteria->order = 't.quantity DESC';
+			$criteria->offset = $page;
             $catId && $criteria->compare('cat_id', $catId);
 			$count = Goods::model()->count($criteria);
 			$pager = new CPagination($count);

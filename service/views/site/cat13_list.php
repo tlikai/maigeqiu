@@ -2,7 +2,9 @@
         	<?php $categoryCount = count( Category::model()->getByAppId() );?>
         	<?php 
         		$child = Yii::app()->request->getQuery( 'child' , 0 );
-	        	$getGoods = Goods::getGoods( '1' , $child , '1' , 60);
+        		
+        		$page = Yii::app()->request->getQuery( 'page' );
+	        	$getGoods = Goods::getGoods( '1' , $child , $page , 60 );
 	        	$currentGoodsCount = count( $getGoods['data'] );
 	        	if ( $currentGoodsCount == 0 ) {
 	        		continue;
@@ -38,5 +40,29 @@
     								                               
   		  							    
     						 </ul>
+    						 
+    						 
     						 </div>
+    						 	<div id="pageList">
+		      <div class="page_box">
+		            <?php 
+		            $this->widget('CLinkPager',array(
+		               'header'=>'',  
+		               'firstPageLabel' => '首页',  
+		               'lastPageLabel' => '末页',  
+		               'prevPageLabel' => '上一页',  
+		               'nextPageLabel' => '下一页',  
+		               'pages' => $getGoods['pager'],  
+		               'maxButtonCount'=>5,  
+		               'cssFile'=>false,
+		               'htmlOptions'=>array(
+		              // 'template'=>'<li><a href="{url}">{lable}</a></li>'
+		               )
+		            ));  
+		            ?>
+			   </div>
+			   </div>
+    						 
+    						 
                         </div>
+                        
