@@ -40,7 +40,31 @@
     						 </div>
     						 
     						 
-    						 <div>
-    						 	asdasd
-    						 </div>
+    						 
+    						 
+    	<div id="pages">
+      <div class="page_box">
+            <?php 
+            $this->widget('CLinkPager',array(
+               'header'=>'',  
+               'firstPageLabel' => '首页',  
+               'lastPageLabel' => '末页',  
+               'prevPageLabel' => '上一页',  
+               'nextPageLabel' => '下一页',  
+               'pages' => $pager,  
+               'maxButtonCount'=>5,  
+               'cssFile'=>false,
+               'htmlOptions'=>array(
+              // 'template'=>'<li><a href="{url}">{lable}</a></li>'
+               )
+            ));  
+            ?>
+	   </div>
+   </div>
+    						 
+    						 
+    						 
+    						 
+    						 
+    						 
                         </div>

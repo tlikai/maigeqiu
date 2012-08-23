@@ -175,9 +175,13 @@
 if ( $catId == null ) {
 	$this->renderPartial('index_list'); 
 } else if ( $catId == '13' ) {
-	$this->renderPartial('cat11_list'); 
+	$this->renderPartial('cat11_list',array(
+			'pager' => $pager,
+	)); 
 } else {
-	$this->renderPartial('cat13_list'); 
+	$this->renderPartial('cat13_list',array(
+			'pager' => $pager,
+	)); 
 }
 
 ?>
