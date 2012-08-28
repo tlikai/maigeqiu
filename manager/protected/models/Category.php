@@ -1,101 +1,153 @@
 <?php
 
 /**
- * This is the model class for table "category".
+ * 分类
  *
- * The followings are the available columns in table 'category':
  * @property string $id
+ * @property integer $app_id
+ * @property integer $parent_id
  * @property string $name
  * @property integer $listorder
  */
 class Category extends CActiveRecord
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @return Category the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 
-	/**
-	 * @return string the associated database table name
-	 */
 	public function tableName()
 	{
-		return 'category';
+		return '{{category}}';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('app_id, listorder', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, app_id, name, listorder', 'safe', 'on'=>'search'),
+			array('app_id, listorder, parent_id', 'numerical', 'integerOnly' => true),
+			array('name', 'length', 'max' => 255),
+		        
+			array('id, app_id, name, listorder, parent_id', 'safe', 'on' => 'search'),
 		);
 	}
-
-	/**
-	 * @return array relational rules.
-	 */
+	
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
 		return array(
 		);
 	}
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
 	public function attributeLabels()
 	{
 		return array(
 			'id' => 'ID',
-			'app_id' => '应用ID',
+			'app_id' => '应用',
 			'name' => '名称',
 			'listorder' => '排序',
+			'parent_id' => '所属分类',
 		);
 	}
 
-    public function getAppList()
-    {
-        return array(
-            1 => 'sex',
-            2 => 'app2',
-        );
-    }
-
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-
 		$criteria->compare('name',$this->name,true);
-
 		$criteria->compare('listorder',$this->listorder);
 
 		return new CActiveDataProvider('Category', array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	public static function getTree($categoryName = '顶级分类', $sid = '-1')
+	{
+	    $get_actions = self::model()->findAll();
+	    $actions_array = array();
+	
+	    foreach($get_actions as $key => $val)
+	    {
+	        $actions_array[] = array(
+                'id' => $val->id,
+                'parent_id' => $val->parent_id,
+                'name' => $val->name
+	        );
+	    }
+	
+	    // 下拉列表
+	    $tree_arr = '<option value="0" selected>' . $categoryName . '</option>';
+	    Tree::$arr = $actions_array;
+	    $tree_arr .= Tree::getTree(0, "<option value=\$id \$selected>\$spacer\$name</option>", $sid, true);
+	
+	    return $tree_arr;
+	}
+	
+	public function getAppList()
+	{
+	    return array(
+			1 => '9块9包邮',
+			2 => '更多特价商品',
+	    );
+	}
+
+    public static function getParentCategoryCache($parentId)
+    {
+        return 'get_parent_category_cache_' . $parentId;
+    }
+	
+	public static function getCategoryNames($parentId = '0')
+    {
+        $data = false;
+        $data = Yii::app()->cache->get(self::getParentCategoryCache($parentId));
+        
+        if($data != false)
+            return $data;
+	
+	    $categoryResult = self::model()->findALl( array(
+                        'condition' => 'parent_id=:parent_id',
+                        'params' => array(
+                                ':parent_id' => $parentId
+                        ),
+                        'order' => 'listorder ASC',
+	    ));
+	
+	    $tmpArray = array();
+        foreach($categoryResult as $key => $val)
+            $tmpArray[$val->id] = $val->name;
+        Yii::app()->cache->set(self::getParentCategoryCache($parentId), $tmpArray, 3600);
+        
+		return $tmpArray;
+	}
+
+    public function getByAppIdCacheKey($appId)
+    {
+        return 'get_by_app_id_cache_key' . $appId;
+    }
+	
+	/**
+	 * 根据应用ID获取分类
+	 *
+	 * @param  integer $appId
+	 * @return array
+	 */
+	public function getByAppId($appId = '11')
+    {
+        $data = false;
+        $data = Yii::app()->cache->get(self::getByAppIdCacheKey($appId));
+        if($data != false)
+            return $data;
+	     
+	    $criteria = new CDbCriteria();
+	    $criteria->index = 'id';
+	    $criteria->condition = 'parent_id=:app_id';
+	    $criteria->params = array(
+			':app_id' => $appId,
+	    );
+        $criteria->order = 'listorder ASC';
+        
+        return $this->findAll($criteria);
 	}
 
     protected function beforeSave()
@@ -104,7 +156,7 @@ class Category extends CActiveRecord
         {
             $this->listorder = isset($this->listorder) ? $this->listorder : 0;
         }
-
+        
         return parent::beforeSave();
     }
 }

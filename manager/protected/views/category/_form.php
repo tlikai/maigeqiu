@@ -20,12 +20,22 @@
 		<?php echo $form->dropDownList($model, 'app_id', $model->getAppList()); ?>
 		<?php echo $form->error($model,'app_id'); ?>
 	</div>
+	
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'parent_id'); ?>
+		<select name="Category[parent_id]" id="Category_parent_id">
+		<?php $treeArr = Category::getTree(); echo $treeArr;?>
+		</select>
+		<?php echo $form->error($model,'parent_id'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'listorder'); ?>
 		<?php echo $form->textField($model,'listorder'); ?>
 		<?php echo $form->error($model,'listorder'); ?>
 	</div>
+	
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? '创建' : '保存'); ?>

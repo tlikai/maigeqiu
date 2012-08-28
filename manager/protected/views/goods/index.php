@@ -16,7 +16,10 @@
 	<strong>淘宝ID</strong>
 	<?php echo $form->textField($model,'tbid'); ?>
 	<strong>分类</strong>
-	<?php echo $form->dropDownList($model, 'cat_id', CHtml::listData($cats, 'id', 'name')); ?>
+	
+	<select name="Goods[cat_id]" id="Goods_cat_id">
+		<?php $treeArr = Category::getTree( ); echo $treeArr;?>
+		</select>
 	<strong>页数</strong>
 	<select name="Goods[page]">
 
