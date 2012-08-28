@@ -38,7 +38,7 @@
 			<ul class="te-navigation">
 					<li <?php if(empty($_GET['cat'])) : ?>class="list-cur"<?php endif; ?>><a href="/">首页</a></li>
               		<?php foreach( Category::getCategoryNames( '0' ) as $key => $val ) : ?>
-              			<li <?php if(isset($_GET['cat']) && $key == $_GET['cat']) : ?>class="list-cur"<?php endif; ?>><a href="<?php echo $this->createAbsoluteUrl('index', array('cat' => $key ) , '' ); ?>"><?php echo $val; ?></a></li>
+              			<li <?php if(isset($_GET['cat']) && $key == $_GET['cat']) : ?>class="list-cur"<?php endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $key ) , '' ); ?>"><?php echo $val; ?></a></li>
 					<?php endforeach;?>
             </ul>
             
@@ -52,7 +52,7 @@
 	<div class="te-subnav">
 		<div class="te-subnav-b">
 	     <?php foreach($cats as $id => $cat) : ?>
-	       <span><a href="<?php echo $this->createAbsoluteUrl('index', array( 'cat' => $catId , 'child' => $id) , ''); ?>"><?php echo $cat['name']; ?></a></span>
+	       <span><a href="<?php echo $this->createUrl('index', array( 'cat' => $catId , 'child' => $id) , ''); ?>"><?php echo $cat['name']; ?></a></span>
 		<?php endforeach; ?>
 		</div>
 	</div>
