@@ -6,11 +6,10 @@
        &nbsp;亲，欢迎来到秒杀专区！
     </p>
         <ul class="quick-menu">
-        <li class="home"><a href="javascript:window.external.addFavorite('http://zhegezhi.com','秒杀专区应用-淘宝网超优汇！天天精品秒杀！9.9/19.9元包邮秒杀活动,名牌折扣品牌特卖5折封顶');
+        <li class="home"><a href="javascript:window.external.addFavorite('http://maigeqiu.com','秒杀专区应用-淘宝网超优汇！天天精品秒杀！9.9/19.9元包邮秒杀活动,名牌折扣品牌特卖5折封顶');
 		" title="将[秒杀专区应用]加入收藏夹" style="color:#F00">加入收藏</a>
 		</li>
-    <li class="home"><a href="http://widget.weibo.com/relationship/followlogin.php?uid=2393429324" target="_blank">关注微博</a></li>
-	 <li class="home"><a href="http://bangpai.taobao.com/group/thread/14389084-274510895.htm" target="_blank" title="点击免费报名">商家报名入口</a></li>
+    <li class="home"><a href="@" target="_blank">关注微博</a></li>
    
     </ul>
 </div></div>
