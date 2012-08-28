@@ -2,8 +2,4 @@
 .buildpath
 .settings
 .DS_Store
-runtime/*
-assets/*
-manager/assets/*
-service/runtime/*
-service/runtime/application.log
+Thumbs.db
