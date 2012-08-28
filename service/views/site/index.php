@@ -9,6 +9,7 @@
         <li class="home"><a href="javascript:window.external.addFavorite('http://maigeqiu.com','秒杀专区应用-淘宝网超优汇！天天精品秒杀！9.9/19.9元包邮秒杀活动,名牌折扣品牌特卖5折封顶');
 		" title="将[秒杀专区应用]加入收藏夹" style="color:#F00">加入收藏</a>
 		</li>
+    <li class="home"><a href="#" target="_blank">关注微博</a></li>
    
     </ul>
 </div></div>
