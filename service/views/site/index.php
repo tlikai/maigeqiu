@@ -53,7 +53,7 @@
 	<div class="te-subnav">
 		<div class="te-subnav-b">
 	     <?php foreach($cats as $id => $cat) : ?>
-	       <span><a href="<?php echo $this->createUrl('index', array( 'cat' => $catId , 'child' => $id)); ?>"><?php echo $cat['name']; ?></a></span>
+	       <span><a href="<?php echo $this->createAbsoluteUrl('index', array( 'cat' => $catId , 'child' => $id)); ?>"><?php echo $cat['name']; ?></a></span>
 		<?php endforeach; ?>
 		</div>
 	</div>
