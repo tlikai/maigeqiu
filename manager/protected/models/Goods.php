@@ -204,7 +204,7 @@ class Goods extends CActiveRecord
         $resp = Yii::app()->topClient->execute($req);
         $res1 = Yii::app()->topClient->processResponse($resp);
         
-        return $res['items']['item'];
+        return $res1['items']['item'];
 	}
 
     public static function processingPromotion($id)
