@@ -6,11 +6,9 @@
        &nbsp;亲，欢迎来到秒杀专区！
     </p>
         <ul class="quick-menu">
-        <li class="home"><a href="javascript:window.external.addFavorite('http://yingyong.taobao.com/show.htm?app_id=6139002','秒杀专区应用-淘宝网超优汇！天天精品秒杀！9.9/19.9元包邮秒杀活动,名牌折扣品牌特卖5折封顶');
+        <li class="home"><a href="javascript:window.external.addFavorite('http://zhegezhi.com','秒杀专区应用-淘宝网超优汇！天天精品秒杀！9.9/19.9元包邮秒杀活动,名牌折扣品牌特卖5折封顶');
 		" title="将[秒杀专区应用]加入收藏夹" style="color:#F00">加入收藏</a>
 		</li>
-      <li class="home"><a href="http://lingzifeng.5.100new.net/desk.php" target="_blank">保存到桌面</a>
-	  </li>
     <li class="home"><a href="http://widget.weibo.com/relationship/followlogin.php?uid=2393429324" target="_blank">关注微博</a></li>
 	 <li class="home"><a href="http://bangpai.taobao.com/group/thread/14389084-274510895.htm" target="_blank" title="点击免费报名">商家报名入口</a></li>
    
@@ -44,7 +42,6 @@
 					<?php endforeach;?>
             </ul>
            <div class="te-menu"><a target="_blank" href="http://bangpai.taobao.com/group/thread/14389084-274510895.htm">商家报名</a></div>
-            <a href="http://lingzifeng.5.100new.net/desk.php" target="_blank" class="luntan"><i></i>保存到桌面</a>
             
         </div>
     </div>
@@ -169,57 +166,32 @@
     
 <?php }?>
 
+
+<?php 
+
+if ( $catId == null ) {
+	$this->renderPartial('index_list'); 
+} else if ( $catId == '13' ) {
+	$this->renderPartial('cat11_list',array(
+			'pager' => $pager,
+	)); 
+} else {
+	$this->renderPartial('cat13_list',array(
+			'pager' => $pager,
+	)); 
+}
+
+?>
 		
-        <div class="layout" id="main">
-        	<?php $categoryCount = count( Category::model()->getByAppId() );?>
-        	<?php for( $i = 1 ; $i <= $categoryCount ; $i++ ){?>
-        	<?php 
-	        	$getGoods = Goods::getGoods( '' , $i );
-	        	$currentGoodsCount = count( $getGoods['data'] );
-	        	if ( $currentGoodsCount == 0 ) {
-	        		continue;
-	        	}
-        	
-        	?>		  
-				 <div id="<?php echo $this->categoryFlag[$i]['id']; ?>" class="<?php echo $this->categoryFlag[$i]['id']; ?> pros">
-                        <div class="title">
-                            <a href="<?php echo $this->createUrl( 'site/index' , array( 'cat' => '11' , 'child' => $i ) )?>" class="h2"></a>
-							<a class="title-info" href="<?php echo $this->createUrl( 'site/index' , array( 'cat' => '11' , 'child' => $i ) )?>"><?php echo $this->categoryFlag[$i]['title']; ?></a>
-                            <a href="<?php echo $this->createUrl( 'site/index' , array( 'cat' => '11' , 'child' => $i ) )?>" class="more"><?php echo $this->categoryFlag[$i]['more']; ?><i></i></a>
-                        </div>
-                        
-                        
-                        <div class="section">
-                            <ul class="list">
-    							   		                                
-    							   		<?php foreach( $getGoods['data'] as $key => $val ) {?>
-    								    <li class="lists lists-first">
-											<div class="lists-box">							
-                                                 <a href="<?php echo $val->url;?>" target="_blank" class="pro-img">
-                        							<img src="<?php echo $val->image_url;?>">
-                                                </a>
-								                  <p class="pro-name">
-                                                    <a href="<?php echo $val->url;?>" target="_blank"><?php echo $val->title;?></a>
-                                                  </p>
-                                                <div class="list-buy">
-                                                    <p class="pro-primary">原价：<em><?php echo $val->sale_price;?></em></p>
-                                                    <span id="item33005" class="salescount">已售出<b><?php echo $val->quantity;?></b>件</span>
-                                                </div>
-                                                <div class="buy">
-                                                    <p class="pro-price">
-                                                        <strong><?php echo $val->price > 0 ? $val->price : $val->sale_price;?></strong>/包邮
-                                                    </p>
-                                                     <a href="<?php echo $val->url;?>" target="_blank" class="btn buybtn">立即抢购</a>
-                                                </div>
-                                        </li>
-                                        <?php } ?>
-    								                               
-  		  							    
-    						 </ul>
-    						 </div>
-                        </div>
-                        <?php }?>
+      
                      
+					
+					
+					
+					
+					
+					
+					
 					
  <style>
 .cuxiaohui-hd {
