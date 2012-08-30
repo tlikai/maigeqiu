@@ -27,7 +27,7 @@ class Category extends CActiveRecord
 			array('name', 'required'),
 			array('app_id, listorder, parent_id', 'numerical', 'integerOnly' => true),
 			array('name', 'length', 'max' => 255),
-		        
+
 			array('id, app_id, name, listorder, parent_id', 'safe', 'on' => 'search'),
 		);
 	}
@@ -35,6 +35,7 @@ class Category extends CActiveRecord
 	public function relations()
 	{
 		return array(
+			'parent' => array(self::BELONGS_TO, 'Category', 'parent_id'),
 		);
 	}
 
@@ -53,9 +54,9 @@ class Category extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('listorder',$this->listorder);
+		$criteria->compare('id', $this->id, true);
+        $criteria->compare('name', $this->name, true);
+        $criteria->compare('listorder', $this->listorder);
 
 		return new CActiveDataProvider('Category', array(
 			'criteria'=>$criteria,
@@ -64,12 +65,12 @@ class Category extends CActiveRecord
 
 	public static function getTree($categoryName = '顶级分类', $sid = '-1')
 	{
-	    $get_actions = self::model()->findAll();
-	    $actions_array = array();
+	    $categorys = self::model()->findAll();
+	    $array = array();
 	
-	    foreach($get_actions as $key => $val)
+	    foreach($categorys as $key => $val)
 	    {
-	        $actions_array[] = array(
+	        $array[] = array(
                 'id' => $val->id,
                 'parent_id' => $val->parent_id,
                 'name' => $val->name
@@ -77,11 +78,11 @@ class Category extends CActiveRecord
 	    }
 	
 	    // 下拉列表
-	    $tree_arr = '<option value="0" selected>' . $categoryName . '</option>';
-	    Tree::$arr = $actions_array;
-	    $tree_arr .= Tree::getTree(0, "<option value=\$id \$selected>\$spacer\$name</option>", $sid, true);
+	    $tree = '<option value="0" selected>' . $categoryName . '</option>';
+	    Tree::$arr = $array;
+	    $tree .= Tree::getTree(0, "<option value=\$id \$selected>\$spacer\$name</option>", $sid, true);
 	
-	    return $tree_arr;
+	    return $tree;
 	}
 	
 	public function getAppList()
@@ -105,12 +106,12 @@ class Category extends CActiveRecord
         if($data != false)
             return $data;
 	
-	    $categoryResult = self::model()->findALl( array(
-                        'condition' => 'parent_id=:parent_id',
-                        'params' => array(
-                                ':parent_id' => $parentId
-                        ),
-                        'order' => 'listorder ASC',
+	    $categoryResult = self::model()->findALl(array(
+			'condition' => 'parent_id=:parent_id',
+            'params' => array(
+            	':parent_id' => $parentId
+            ),
+            'order' => 'listorder ASC',
 	    ));
 	
 	    $tmpArray = array();
@@ -149,14 +150,4 @@ class Category extends CActiveRecord
         
         return $this->findAll($criteria);
 	}
-
-    protected function beforeSave()
-    {
-        if($this->isNewRecord)
-        {
-            $this->listorder = isset($this->listorder) ? $this->listorder : 0;
-        }
-        
-        return parent::beforeSave();
-    }
 }

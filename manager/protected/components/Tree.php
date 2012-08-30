@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 树形结构
  * @auther Baiqing Wu <wbqyyicx@gmail.com>
@@ -9,13 +10,13 @@
 class Tree
 {
 	/**
-	* 换行图标
-	*
-	* @since 1.0
-	* @access private
-	* @var array
-	*/
-	private static $icon = array('│','├',' └');
+	 * 换行图标
+	 *
+	 * @since 1.0
+	 * @access private
+	 * @var array
+	 */
+	private static $icon = array('│', '├', ' └');
 
 	/**
 	 * 初始化的二维数组
@@ -76,7 +77,7 @@ class Tree
 	 * @since 1.0
 	 * @return string
 	 */
-	public static function getTree($parent_id , $string, $sid = 0,$style_selected = true,$where_arr = false,$adds = '')
+	public static function getTree($parent_id, $string, $sid = 0, $style_selected = true, $where_arr = false, $adds = '')
 	{
 		$child_id = self::getChild($parent_id);
 		$number = 1;
@@ -89,22 +90,25 @@ class Tree
 				$j = $k = '';
 
 				if($style_selected == true)
-				{
-					if($number == $total) {
-						$j.=self::$icon['2'];
-					} else {
-						$j.=self::$icon['1'];
-						$k = $adds ? self::$icon['0'] : $adds;
-					}
-				}
-
-				$spacer = $adds ? $adds.$j : '';
-				$selected = $id==$sid ? 'selected' : '';
+                {
+                    if($number == $total)
+                    {
+                        $j .= self::$icon['2'];
+                    }
+                    else
+                  {
+                        $j .= self::$icon['1'];
+                        $k = $adds ? self::$icon['0'] : $adds;
+                    }
+                }
+                
+                $spacer = $adds ? $adds . $j : '';
+                $selected = $id == $sid ? 'selected' : '';
 				@extract($val);
 				eval("\$str = \"$string\";");
 
-				self::$string.=$str;
-				self::getTree($id, $string, $sid ,$style_selected,$where_arr,$adds.$k.'&nbsp;');
+				self::$string .= $str;
+				self::getTree($id, $string, $sid, $style_selected, $where_arr, $adds . $k . '&nbsp;');
 				$number++;
 			}
 		}

@@ -43,6 +43,12 @@ class Top extends CApplicationComponent
 	 */
     private $_client;
     
+    
+    /**
+     * 初始化TopClient参数
+     * 
+     * @see CApplicationComponent::init()
+     */
     public function init()
     {
         parent::init();
@@ -52,6 +58,11 @@ class Top extends CApplicationComponent
 		$this->_client->format = $this->format;
     }
     
+    /**
+     * 调用对应TopClient方法
+     * 
+     * @see CComponent::__call()
+     */
     public function __call($name, $parameters)
     {
         if(method_exists($this->_client, $name))

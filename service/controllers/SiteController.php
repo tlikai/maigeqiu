@@ -61,12 +61,11 @@ class SiteController extends Controller
 	{
 		return array(
 			'captcha'=>array(
-				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
+				'class' => 'CCaptchaAction',
+				'backColor' => 0xFFFFFF,
 			),
-		        
 			'page'=>array(
-				'class'=>'CViewAction',
+				'class' => 'CViewAction',
 			),
 		);
 	}
