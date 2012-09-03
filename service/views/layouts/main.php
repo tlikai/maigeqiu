@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="./static/tlabs-min.js" async=""></script>
-<script src="./static/tb-mpp-min.js" async=""></script>
-<meta charset="GBK">
-<title>秒杀专区首页 - 汇淘宝精品 - 淘宝网超优汇_每天10:00开始抢购！</title>
-<link rel="stylesheet" href="./static/common.css" type="text/css">
-<!-- start vmc css 3.1-->
-<link rel="stylesheet" href="./static/header-min.css" type="text/css">
-<!-- end vmc css 3.1-->
-<link rel="stylesheet" href="./static/index_v2.css" type="text/css">
-<link rel="stylesheet" href="./static/index.css" type="text/css">
-<script type="text/javascript"
-	src="./static/global-min.js"></script>
-<style type="text/css"></style>
-<link id="yui__dyn_0" type="text/css" charset="utf-8" rel="stylesheet" href="./static/tbra.css">
-<!--原来的head-->
-<!--原来的head end-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo Yii::app()->baseUrl; ?>/css/crbj.css" rel="stylesheet" type="text/css"/>
+    <script language="javascript" type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.js"/></script>
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <script>
+       (function(){
+          var ac = document.createElement('script'); ac.type = 'text/javascript'; ac.async = true;
+          ac.src =  'http://a.tbcdn.cn/apps/stargate/ac/js/proxy.js?t='+new Date().getTime();
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ac, s);
+       })();
+    </script>
 </head>
-
-<body screen_capture_injected="true">
-	<?php echo $content;?>
+<body>
+    <div id="main">
+        <?php echo $content; ?>
+    </div>
 </body>
 </html>
