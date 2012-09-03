@@ -133,7 +133,7 @@ class Category extends CActiveRecord
 	 * @param  integer $appId
 	 * @return array
 	 */
-	public function getByAppId($appId = '11')
+	public function getByAppId($appId)
     {
         $data = false;
         $data = Yii::app()->cache->get(self::getByAppIdCacheKey($appId));

@@ -323,7 +323,7 @@ class Goods extends CActiveRecord
 	        $catId && $criteria->compare('cat_id', $catId);
 	        $count = Goods::model()->count($criteria);
 	        $pager = new CPagination($count);
-	        $pager->pageSize = 10;
+	        $pager->pageSize = 18;
 	        $pager->applyLimit($criteria);
 	        $data = Goods::model()->findAll($criteria);
 	
