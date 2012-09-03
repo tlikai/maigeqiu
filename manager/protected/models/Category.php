@@ -142,7 +142,7 @@ class Category extends CActiveRecord
 	     
 	    $criteria = new CDbCriteria();
 	    $criteria->index = 'id';
-	    $criteria->condition = 'parent_id=:app_id';
+	    $criteria->condition = 'app_id=:app_id';
 	    $criteria->params = array(
 			':app_id' => $appId,
 	    );
