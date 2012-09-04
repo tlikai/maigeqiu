@@ -70,6 +70,20 @@ class SiteController extends Controller
 		);
 	}
 
+
+	/**
+	 * 求推荐页面
+	 */
+	public function actionRecommend()
+	{
+
+
+		echo $this->layout;
+
+        $this->render( 'recommend' );
+	
+	}
+
 	public function actionIndex()
 	{
 		$page = Yii::app()->request->getQuery('page', 1);
@@ -133,7 +147,6 @@ class SiteController extends Controller
 	
 	public function actionTaoBaoApp()
 	{
-		$this->layout = 'app2';
         
         $id = Yii::app()->request->getQuery('id');
         $page = Yii::app()->request->getQuery('page', '1');

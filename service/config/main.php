@@ -6,6 +6,7 @@ return array(
 	'basePath' => dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name' => '成人街 - 淘宝应用',
     'timeZone' => 'Asia/Shanghai',
+	
 
 	'preload' => array('log'),
 
