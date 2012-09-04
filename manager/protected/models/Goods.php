@@ -64,7 +64,7 @@ class Goods extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-            'cat_id' => '分类',
+            'cat_id' => '所属分类',
 			'title' => '标题',
 			'short_title' => '自定义标题',
 			'price' => '现价',
@@ -80,7 +80,7 @@ class Goods extends CActiveRecord
 			'commission' => '佣金',
 			'commission_rate' => '佣金率',
 			'sort' => '排序',
-			'tb_id'=>'淘宝ID',
+			'tb_id' => '淘宝ID',
 			'recommend' => '推荐商品',
 		);
 	}
@@ -106,10 +106,15 @@ class Goods extends CActiveRecord
 		$criteria->order = 't.id Desc';
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
-
+	
+	/**
+	 * 根据淘宝商品ID获取商品数据
+	 * 
+	 * @param array $num_iids
+	 */
     public static function getTaobaoKeLink($num_iids)
     {
 		$click_urls = array();
@@ -204,7 +209,7 @@ class Goods extends CActiveRecord
         $resp = Yii::app()->topClient->execute($req);
         $res1 = Yii::app()->topClient->processResponse($resp);
         
-        return $res['items']['item'];
+        return $res1['items']['item'];
 	}
 
     public static function processingPromotion($id)
@@ -231,30 +236,32 @@ class Goods extends CActiveRecord
 
 	/**
 	 * 关键词搜索淘宝客数据
+	 * 
+	 * @param string $options 搜索参数
 	 */
-	public static function processingIndex($array)
+	public static function processingIndex($params)
 	{
 		$res = array();
 
-		if(empty($array['keyword']) && empty($array['tbid']))
+		if(empty($params['keyword']) && empty($params['tbid']))
 			return false;
 
 		$req = new TaobaokeItemsGetRequest;
 		$req->setFields("num_iid,title,nick,pic_url,price,click_url,commission,commission_rate,commission_num,commission_volume,shop_click_url,seller_credit_score,item_location,volume");
 		$req->setPid(Yii::app()->params['pid']); // 淘宝联盟（阿里妈妈）PID
-		$req->setPageNo($array['page']);
+		$req->setPageNo($params['page']);
 		$req->setStartPrice(Yii::app()->params['start_price']);
 		$req->setEndPrice(Yii::app()->params['end_price']);
 		$req->setSort(Yii::app()->params['sort']);
                 
-        if(!empty($array['keyword']))
+        if(!empty($params['keyword']))
         {
-            $req->setKeyword($array['keyword']);
+            $req->setKeyword($params['keyword']);
         }
         else
-        {
+       {
             $newId = array();
-            $newId = explode(',', $array['tbid']);
+            $newId = explode(',', $params['tbid']);
             return self::getTaobaoKeLink($newId);
         }
 
@@ -266,69 +273,68 @@ class Goods extends CActiveRecord
 	}
 	
 
-	public static function getRecommentGoodsCacheKey( $number ) {
-	    return 'goods_recomment_'.$number;
+	public static function getRecommentGoodsCacheKey($number)
+	{
+    	return 'goods_recomment_' . $number;
 	}
 	
 	/**
 	 * 获取推荐商品
+	 * 
 	 * @param unknown_type $number
 	 */
-	public static function getRecommentGoods( $number = '3' )
+	public static function getRecommentGoods($number = '3')
 	{
 	    $data = false;
-	    $data = Yii::app()->cache->get( self::getRecommentGoodsCacheKey( $number ) );
+	    $data = Yii::app()->cache->get(self::getRecommentGoodsCacheKey($number));
 	
-	    if ( $data != false ) {
-	        return $data;
-	    }
+	    if($data != false)
+        	return $data;
 	
-	    $goods = self::model()->findAll( array (
-	            'limit' => '3',
-	            'order' => 'recommend Desc',
-	    ) );
-	
-	    Yii::app()->cache->set( self::getRecommentGoodsCacheKey( $number ) , $goods , 3600 );
+	    $goods = self::model()->findAll(array(
+			'limit' => '3',
+            'order' => 'recommend desc',
+		));
+	    Yii::app()->cache->set(self::getRecommentGoodsCacheKey($number), $goods, 3600);
+	    
 	    return $goods;
 	}
 	
 	
 	public static function getGoodsCacheKey($appId, $catId, $page)
 	{
-	    return 'goods_cache_'.$appId.'_'.$catId.'_'.$page;
+	    return 'goods_cache_' . $appId . '_' . $catId . '_' . $page;
 	}
 	
 	public static function getGoodsCountCacheKey($catId, $page)
 	{
-	    return 'goods_cache_count_'.$catId.'_'.$page;
+	    return 'goods_cache_count_' . $catId . '_' . $page;
 	}
-	
-	
 	
 	public static function getGoods($appId = 1, $catId = 0, $page = 1)
 	{
-	    $data = array('data'=>null);
+	    $data = array('data' => null);
 	    $data = Yii::app()->cache->get(self::getGoodsCacheKey($appId, $catId, $page));
 	    if($data == false)
 	    {
 	        $criteria = new CDbCriteria;
-	        $criteria->condition = 't.end_time > '.time();
+	        $criteria->condition = 't.end_time > '. time();
 	        $criteria ->order = 't.quantity DESC';
 	        $catId && $criteria->compare('cat_id', $catId);
 	        $count = Goods::model()->count($criteria);
 	        $pager = new CPagination($count);
-	        $pager->pageSize = 10;
+	        $pager->pageSize = 18;
 	        $pager->applyLimit($criteria);
-	        $data =  Goods::model()->findAll($criteria);
+	        $data = Goods::model()->findAll($criteria);
 	
-	        if ($appId != 1) {
-	            shuffle($data);
-	        }
+	        if($appId != 1)
+            	shuffle($data);
 	
-	        $data = array('data'=>$data,'pager'=>$pager);
+	        $data = array('data' => $data,'pager' => $pager);
 	
-	        Yii::app()->cache->set(self::getGoodsCacheKey($appId, $catId, $page),$data,1800);
+	        Yii::app()->cache->set(self::getGoodsCacheKey($appId, $catId, $page), $data, 1800);
 	    }
+	    
 	    return $data;
 	}
 
@@ -336,7 +342,6 @@ class Goods extends CActiveRecord
     {
     	if(!$array || $appId == 1)
         	return false;
-        echo $appId;
     	return shuffle($array);
 	}
 }

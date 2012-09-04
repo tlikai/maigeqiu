@@ -1,6 +1,6 @@
 <?php
 
-Yii::setPathOfAlias('manager', dirname(__FILE__) . '../../../manager/protected/');
+Yii::setPathOfAlias('manager', dirname(__FILE__) . '/../../manager/protected/');
 
 return array(
 	'basePath' => dirname(__FILE__).DIRECTORY_SEPARATOR.'..',

@@ -61,12 +61,11 @@ class SiteController extends Controller
 	{
 		return array(
 			'captcha'=>array(
-				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
+				'class' => 'CCaptchaAction',
+				'backColor' => 0xFFFFFF,
 			),
-		        
 			'page'=>array(
-				'class'=>'CViewAction',
+				'class' => 'CViewAction',
 			),
 		);
 	}
@@ -81,7 +80,7 @@ class SiteController extends Controller
         $layout = $this->layout;
         
         $goods = Goods::getGoods($appId, $catId, $page);
-        $cats = Category::model()->getByAppId($catId);
+        $cats = Category::model()->getByAppId($appId);
         $this->layout = $layout;
         $this->render($view, array(
             'cats' => $cats,
