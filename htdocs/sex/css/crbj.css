@@ -54,3 +54,4 @@ body{background:#ffffff;url(../images/bg.jpg) repeat-x;}
 #pages li a:hover{border:1px solid #ff6666;background:#fa5689;color:#ffffff;}
 
 
+#hot{ position:absolute; right:0px; bottom:29px; }
