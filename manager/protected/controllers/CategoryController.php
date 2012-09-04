@@ -39,6 +39,8 @@ class CategoryController extends Controller
 		if(isset($_POST['Category']))
 		{
 			$model->attributes = $_POST['Category'];
+			$model->listorder = isset($model->listorder) ? $model->listorder : 0;
+			
 			if($model->save())
 				$this->redirect(array('view', 'id' => $model->id));
 		}

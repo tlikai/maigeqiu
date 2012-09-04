@@ -26,13 +26,13 @@ class GoodsController extends Controller
 	public function actionView($id)
 	{
         $this->render('view', array(
-                'model' => $this->loadModel($id)
+			'model' => $this->loadModel($id)
         ));
 	}
 
 	public function actionCreate()
 	{
-		$model=new Goods;
+		$model = new Goods();
         
         if(isset($_POST['Goods']))
         {
@@ -95,7 +95,7 @@ class GoodsController extends Controller
 
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model = $this->loadModel($id);
 
 		if(isset($_POST['Goods']))
 		{
@@ -109,7 +109,7 @@ class GoodsController extends Controller
 		}
         
         $this->render('update', array(
-                'model' => $model
+			'model' => $model
         ));
 	}
 
@@ -218,12 +218,8 @@ class GoodsController extends Controller
 			}
 		}
 
-		$cats = Category::model()->findAll();
-		array_unshift($cats, array('id' => 0, 'name' => '无'));
-
 		$this->render('index', array(
 			'model' => $model,
-			'cats' => $cats,
 			'list' => $list,
 			'errorList' => $errorList,
 		));
