@@ -15,6 +15,11 @@
 	<?php echo $form->textField($model,'keyword'); ?>
 	<strong>淘宝ID</strong>
 	<?php echo $form->textField($model,'tbid'); ?>
+	<strong>分类</strong>
+	
+	<select name="Goods[cat_id]" id="Goods_cat_id">
+		<?php $treeArr = Category::getTree( ); echo $treeArr;?>
+		</select>
 	<strong>页数</strong>
 	<select name="Goods[page]">
 

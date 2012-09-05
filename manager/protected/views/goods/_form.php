@@ -15,6 +15,14 @@
 		<input type="button" id="taoButton" value="采集"/>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'cat_id'); ?>
+		<select name="Goods[cat_id]" id="Goods_cat_id">
+		<?php $treeArr = Category::getTree( '顶级分类' , $model->cat_id - 1 ); echo $treeArr;?>
+		</select>
+		<?php echo $form->error($model,'cat_id'); ?>
+	</div>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
@@ -46,7 +54,7 @@
 		<?php echo $form->error($model,'quantity'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" >
 		<?php echo $form->labelEx($model,'start_time'); ?>
 		<?php echo $form->textField($model,'start_time',array('class'=>'Wdate','value'=>$model->start_time ? date("Y-m-d H:i:s",$model->start_time) : "",'onclick'=>'WdatePicker({dateFmt:"yyyy-MM-dd H:mm:ss",startDate:"%y-%M-%d 0:00:00"})')); ?>
 		<?php echo $form->error($model,'start_time'); ?>
@@ -70,7 +78,7 @@
 		<?php echo $form->error($model,'shop_url'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" style="display:none;">
 		<?php echo $form->labelEx($model,'add_time'); ?>
 		<?php echo $form->textField($model,'add_time',array('value'=>$model->add_time ? date("Y-m-d H:i:s",$model->add_time) : "",'readonly'=>'readonly')); ?>
 		<?php echo $form->error($model,'add_time'); ?>
@@ -112,6 +120,12 @@
 		<?php echo $form->labelEx($model,'sort'); ?>
 		<?php echo $form->textField($model,'sort'); ?>
 		<?php echo $form->error($model,'sort'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'recommend'); ?>
+		<?php echo $form->textField($model,'recommend'); ?>
+		<?php echo $form->error($model,'recommend'); ?>
 	</div>
 
 	<div class="row buttons">

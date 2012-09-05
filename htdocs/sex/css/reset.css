@@ -1,0 +1,50 @@
+/*公共基础begin*/
+
+*{margin:0;padding:0;}
+
+body{padding:0;background:#FFF;font-family:"微软雅黑",tahoma;font-size:14px;}
+
+div,table,td,li,input,select,dd{font-size:18px;font-family:"微软雅黑",tahoma;}
+
+img{border:0px;}
+
+ul,li{list-style: none;}
+
+input,select,img,label{vertical-align:middle;}
+
+
+
+/*各类通用样式begin*/
+
+.clear{clear:both; font-size:1px; line-height:1px;}
+
+.f14{font-size:14px;}
+
+
+
+
+
+/*链接样式*/
+
+a:link{color:#333; text-decoration:none;}
+
+a:visited{color:#333; text-decoration:none;}
+
+a:hover{color:#FF6600; text-decoration:none;}
+
+a:active {color:#FF6600; text-decoration:none;}
+
+:focus{outline:0;}
+
+
+
+ul:after, dl:after, .clearfix:after{content:"."; display:block; clear:both; visibility:hidden; height:0;}
+
+ul, dl, .clearfix{*zoom:1;}
+
+
+
+.l{float:left;}
+
+.r{float:right;}
+
