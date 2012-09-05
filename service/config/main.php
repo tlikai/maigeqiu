@@ -6,6 +6,7 @@ return array(
 	'basePath' => dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name' => '成人街 - 淘宝应用',
     'timeZone' => 'Asia/Shanghai',
+	
 
 	'preload' => array('log'),
 
@@ -32,7 +33,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=tbk',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 			'tablePrefix' => '',
 		),

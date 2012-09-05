@@ -8,6 +8,10 @@
                 <?php foreach($cats as $id => $cat) : ?>
                 <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<?php endif; ?>><a href="<?php echo $this->createUrl('index', array('cat' => $id)); ?>"><?php echo $cat['name']; ?></a></li>
                 <?php endforeach; ?>
+
+                <li <?php if(isset($_GET['cat']) && $id == $_GET['cat']) : ?>class="def"<?php endif; ?> ><a href="<?php echo $this->createUrl('recommend'); ?>">求推荐</a> <img src="../images/hot.gif" id="hot"> </li>
+			
+
             </ul>
         </div>
     </div>
